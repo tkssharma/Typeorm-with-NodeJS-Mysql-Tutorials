@@ -8,7 +8,8 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { User } from './user';
+import { User } from './User';
+import Comment from './Comment';
 
 @Entity()
 export class Post {
@@ -27,6 +28,9 @@ export class Post {
 
   @ManyToOne(() => User, user => user.posts, { eager: true, onDelete: 'CASCADE' })
   public user!: User;
+
+  @OneToMany(() => Comment, comment => comment.post)
+  public comments!: Comment[];
 
   @Column()
   @CreateDateColumn()

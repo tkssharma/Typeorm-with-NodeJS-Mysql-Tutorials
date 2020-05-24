@@ -11,6 +11,7 @@ import {
 } from 'typeorm';
 import Comment from './Comment';
 import Post from './Post';
+import { Article } from './Article';
 
 @Entity()
 @Unique(['email'])
@@ -36,6 +37,12 @@ export class User {
 
   @OneToMany(() => Post, post => post.user)
   public posts!: Post[];
+
+  @OneToMany(() => Article, article => article.author)
+  public artcles!: Article[];
+
+  @OneToMany(type => Article, article => article.author)
+  public articles!: Article[];
 
   @OneToMany(() => Comment, comment => comment.user)
   public comments!: Comment[];
