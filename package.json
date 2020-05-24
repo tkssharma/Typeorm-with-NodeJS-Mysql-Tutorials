@@ -1,5 +1,5 @@
 {
-  "name": "scooty-apis",
+  "name": "node-js-express-typescript",
   "version": "1.0.0",
   "description": "Template to create nodejs with Typescript and Type ORM",
   "main": "./dist/src/index.js",
@@ -9,15 +9,7 @@
     "lint": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'",
     "lint:fix": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'  --fix",
     "test": "ENV=test nyc mocha -r ts-node/register -r dotenv/config src/test/**/*.spec.ts --exit",
-    "coverage": ". && nyc -r text-summary -r html npm run test",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.ts",
-    "db:drop": "npm run typeorm:cli schema:drop",
-    "migration:generate": "typeorm migration:create -n",
-    "db:create": "ts-node src/script/create-db.ts",
-    "db:migrate": "npm run typeorm:cli migration:run",
-    "db:revert": "npm run typeorm:cli migration:revert",
-    "db:sync": "npm run typeorm:cli schema:sync && npm run db:migrate"
+    "coverage": ". && nyc -r text-summary -r html npm run test"
   },
   "keywords": [
     "typescript",
@@ -65,12 +57,10 @@
     "express-winston": "^4.0.2",
     "helmet": "^3.21.2",
     "lodash": "^4.17.15",
-    "mysql2": "^2.1.0",
     "nodemon": "^2.0.1",
     "reflect-metadata": "^0.1.13",
     "strong-params": "^1.0.0",
     "tslint-sonarts": "^1.9.0",
-    "typeorm": "^0.2.22",
     "typescript": "^3.8.3",
     "winston": "^3.2.1"
   },
