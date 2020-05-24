@@ -5,7 +5,7 @@ services:
         ports:
             - 3000:3000
         volumes:
-            - ./:/server
+            - ./:/usr/src/app
         depends_on:
             - mysql
     mysql:

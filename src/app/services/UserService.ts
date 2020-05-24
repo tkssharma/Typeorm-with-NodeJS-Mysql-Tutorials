@@ -9,13 +9,27 @@ export class UserService {
     async get(): Promise<User[] | null> {
         // Get users from database
         try {
-            // get data from DB 
-            return [];
+            // TBD
+            const userRepo = getRepository(User);
+            return await userRepo.find({});
         }
         catch (error) {
             throw new Error(error);
-            return Promise.reject(new APIError('User Already exists', Err.EmailAlreadyExists));
+            // return Promise.reject(new APIError('User Already exists', Err.EmailAlreadyExists));
 
         }
+    }
+    async add(data: any): Promise<User> {
+       try {
+           const user = new User();
+           user.role = data.role;
+           const userRepo = getRepository(User);
+           const newUser = await userRepo.save(user);
+           return newUser;
+           
+       }catch(err){
+           // error
+           return Promise.reject(new APIError('User Already exist', 1001));
+       }
     }
 }

@@ -35,3 +35,5 @@ const middlewares = {
       }
     }
 }
+
+export { middlewares}
