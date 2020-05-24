@@ -8,37 +8,33 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import Comment from './Comment';
-import User from './User';
+import { User } from './user';
 
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
-  public id: number;
+  public id!: number;
 
   @Column()
   @IsNotEmpty()
-  public title: string;
+  public title!: string;
 
   @Column()
-  public url: string;
+  public url!: string;
 
   @Column()
-  public text: string;
+  public text!: string;
 
   @ManyToOne(() => User, user => user.posts, { eager: true, onDelete: 'CASCADE' })
-  public user: User;
-
-  @OneToMany(() => Comment, comment => comment.post)
-  public comments: Comment[];
+  public user!: User;
 
   @Column()
   @CreateDateColumn()
-  public createdAt: Date;
+  public createdAt!: Date;
 
   @Column()
   @UpdateDateColumn()
-  public updatedAt: Date;
+  public updatedAt!: Date;
 }
 
 export default Post;
