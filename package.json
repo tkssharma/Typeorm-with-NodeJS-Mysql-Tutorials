@@ -58,6 +58,8 @@
     "strong-params": "^1.0.0",
     "tslint-sonarts": "^1.9.0",
     "typescript": "^3.8.3",
+    "typeorm": "^0.2.22",
+    "mysql2": "^2.1.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
