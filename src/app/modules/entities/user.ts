@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { IsNotEmpty, Length } from 'class-validator';
+import { IsNotEmpty, Length, IsEmail } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -13,34 +13,40 @@ import Comment from './Comment';
 import Post from './Post';
 
 @Entity()
-@Unique(['username'])
+@Unique(['email'])
 export class User {
   @PrimaryGeneratedColumn()
-  public id: number;
+  public id!: number;
 
   @Column()
   @Length(4, 20)
   @IsNotEmpty()
-  public username: string;
+  public username!: string;
+
+
+  @Column()
+  @Length(4, 20)
+  @IsEmail()
+  public email!: string;
 
   @Column({ select: false })
   @Length(4, 100)
   @IsNotEmpty()
-  public password: string;
+  public password!: string;
 
   @OneToMany(() => Post, post => post.user)
-  public posts: Post[];
+  public posts!: Post[];
 
   @OneToMany(() => Comment, comment => comment.user)
-  public comments: Comment[];
+  public comments!: Comment[];
 
   @Column()
   @CreateDateColumn()
-  public createdAt: Date;
+  public createdAt!: Date;
 
   @Column()
   @UpdateDateColumn()
-  public updatedAt: Date;
+  public updatedAt!: Date;
 
   public hashPassword() {
     this.password = bcrypt.hashSync(this.password, 8);
