@@ -4,40 +4,43 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   Unique,
   UpdateDateColumn,
 } from 'typeorm';
+import Comment from './Comment';
+import Post from './Post';
 
 @Entity()
-@Unique(['email'])
+@Unique(['username'])
 export class User {
   @PrimaryGeneratedColumn()
-  public id!: number;
+  public id: number;
 
   @Column()
-  @Length(4, 100)
-  public username!: string;
-
-  @Column()
-  @Length(4, 100)
-  public email!: string;
-
-  @Column()
-  @Length(4, 100)
-  public password!: string;
-
-  @Column()
+  @Length(4, 20)
   @IsNotEmpty()
-  public role!: string;
+  public username: string;
+
+  @Column({ select: false })
+  @Length(4, 100)
+  @IsNotEmpty()
+  public password: string;
+
+  @OneToMany(() => Post, post => post.user)
+  public posts: Post[];
+
+  @OneToMany(() => Comment, comment => comment.user)
+  public comments: Comment[];
 
   @Column()
   @CreateDateColumn()
-  public createdAt!: Date;
+  public createdAt: Date;
 
   @Column()
   @UpdateDateColumn()
-  public updatedAt!: Date;
+  public updatedAt: Date;
 
   public hashPassword() {
     this.password = bcrypt.hashSync(this.password, 8);
@@ -47,3 +50,5 @@ export class User {
     return bcrypt.compareSync(unencryptedPassword, this.password);
   }
 }
+
+export default User;
