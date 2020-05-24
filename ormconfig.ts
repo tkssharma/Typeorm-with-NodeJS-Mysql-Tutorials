@@ -5,10 +5,10 @@ module.exports = {
     username: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME,
-    synchronize: false,
+    synchronize: true,
     logging: true,
     entities: [
-       'src/app/models/entities/*.ts',
+       'src/app/modules/entities/*.ts',
     ],
     migrations: [
        'src/migration/**/*.ts',

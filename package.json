@@ -5,7 +5,14 @@
   "main": "./dist/src/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon"
+    "start": "nodemon",
+    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.ts",
+    "db:drop": "npm run typeorm:cli schema:drop",
+    "migration:generate": "typeorm migration:create -n",
+    "db:create": "ts-node src/script/create-db.ts",
+    "db:migrate": "npm run typeorm:cli migration:run",
+    "db:revert": "npm run typeorm:cli migration:revert",
+    "db:sync": "npm run typeorm:cli schema:sync && npm run db:migrate"
   },
   "keywords": [
     "typescript",
