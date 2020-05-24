@@ -22,7 +22,6 @@ export class UserService {
     async add(data: any): Promise<User> {
        try {
            const user = new User();
-           user.role = data.role;
            const userRepo = getRepository(User);
            const newUser = await userRepo.save(user);
            return newUser;
