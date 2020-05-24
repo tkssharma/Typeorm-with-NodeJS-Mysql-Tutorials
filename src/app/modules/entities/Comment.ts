@@ -9,7 +9,6 @@ import {
 } from 'typeorm';
 import Post from './Post';
 import User from './User';
-import { Article } from './Article';
 
 @Entity()
 export class Comment {
@@ -21,13 +20,10 @@ export class Comment {
   public text!: string;
 
   @ManyToOne(() => User, user => user.comments, { eager: true, onDelete: 'CASCADE' })
-  public user: User = new User;
+  public user!: User;
 
   @ManyToOne(() => Post, post => post.comments, { eager: true, onDelete: 'CASCADE' })
-  public post: Post = new Post;
-
-  @ManyToOne(() => Article, post => post.comments, { onDelete: 'CASCADE' })
-  public article: Article = new Article;
+  public post!: Post;
 
   @Column()
   @CreateDateColumn()
