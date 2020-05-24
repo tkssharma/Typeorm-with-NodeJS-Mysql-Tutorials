@@ -7,4 +7,4 @@ COPY . .
 RUN  npm install
 # Run npm install --global grpc --unsafe-perm
 EXPOSE 3000 9204
-CMD [ "npm", "run", "debug" ]
+CMD [ "npm", "run", "start" ]
