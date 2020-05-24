@@ -34,7 +34,7 @@ export class Article {
   @Column('simple-array')
   tagList!: string[];
 
-  @ManyToOne(type => User, user => user.articles)
+  @ManyToOne(type => User, user => user.artcles)
   author!: User;
 
   @OneToMany(type => Comment, comment => comment.article)
