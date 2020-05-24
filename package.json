@@ -5,11 +5,7 @@
   "main": "./dist/src/index.js",
   "scripts": {
     "build": "tsc",
-    "debug": "nodemon",
-    "lint": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'",
-    "lint:fix": "./node_modules/.bin/tslint --project ./tsconfig.json -e 'src/test/**/*.*'  --fix",
-    "test": "ENV=test nyc mocha -r ts-node/register -r dotenv/config src/test/**/*.spec.ts --exit",
-    "coverage": ". && nyc -r text-summary -r html npm run test"
+    "start": "nodemon"
   },
   "keywords": [
     "typescript",
