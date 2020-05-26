@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken'
 import { IRequest } from "./Request";
 
 
-export const checkJWT = (req: IRequest, res: Response, next: NextFunction) => {
+export const checkIsUser = (req: IRequest, res: Response, next: NextFunction) => {
   const curentUserId = req.payload.userId;
   if(curentUserId === Number(req.params.id)){
      next()

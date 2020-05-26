@@ -47,6 +47,7 @@
     "instrument": true
   },
   "dependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "ajv": "^6.10.2",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",

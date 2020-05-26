@@ -1,12 +1,13 @@
 import { NextFunction, Request, Response } from 'express'
 import { getRepository } from 'typeorm'
-import Post from '../entity/Post'
+import Post from '../modules/entities/Post';
+import { IRequest } from './Request'
 
-export const checkIsAuthor = (req: Request, res: Response, next: NextFunction) => {
-  const currentUserId = res.locals.jwtPayload.userId
+export const checkIsAuthor = (req: IRequest, res: Response, next: NextFunction) => {
+  const currentUserId = req.payload.userId
   getRepository(Post)
     .findOne(req.params.id)
-    .then((post: Post) => {
+    .then((post: any) => {
       const authorId = post.user.id
       if (authorId === currentUserId) {
         next()
