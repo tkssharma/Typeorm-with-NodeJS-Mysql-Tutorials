@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { Request } from 'express';
-import { User } from '../modules/entities/user';
+import { User } from '../modules/entities/User';
 import APIError from '../global/response/apierror';
 import Err from '../global/response/errorcode';
 

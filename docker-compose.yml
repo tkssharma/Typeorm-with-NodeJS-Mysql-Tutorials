@@ -19,5 +19,15 @@ services:
             MYSQL_DATABASE: test
             MYSQL_USER: root
             MYSQL_PASSWORD: root
+    mongo:
+        image: mongo
+        container_name: global-mongo-service
+        restart: unless-stopped
+        volumes:
+            - mongo_data:/data/configdb
+            - mongo_data:/data/db
+        ports:
+            - 27017:27017        
 volumes:
     db-data: {}
+    mongo_data: {}
