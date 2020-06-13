@@ -1,4 +1,7 @@
-# api-express-template
+# Node JS with TypeORM 
+
+https://www.youtube.com/watch?v=UxiTsvUuYFA&list=PLIGDNOJWiL1-eFfnY4bAyCI8bsIOHmNtE
+
 my base repo for any new service [Typescript + Strong typing + TypeORM + Docker ]
 
 # Componenet Used in Template 
